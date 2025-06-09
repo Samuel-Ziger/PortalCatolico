@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="pt-BR">
+	<head>
+		<meta charset="UTF-8" />
+		<link rel="icon" type="image/svg+xml" href="/vite.svg" />
+		<meta name="generator" content="Hostinger Horizons" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta name="description" content="Portal Católico com recursos espirituais, orações, wallpapers de santos, e conteúdo para fortalecer sua fé católica. Encontre orações, imagens de santos e muito mais." />
+		<meta name="keywords" content="catolicismo, orações católicas, santos católicos, fé católica, igreja católica, wallpapers católicos, São Francisco de Assis, Santa Teresa de Ávila, São João Paulo II, Santa Terezinha do Menino Jesus, São Padre Pio" />
+		<title>Portal Católico - Recursos e Orações para a Fé Católica</title>
+		<script src="https://cdn.tailwindcss.com"></script>
+		<script>
+			tailwind.config = {
+				theme: {
+					extend: {
+						colors: {
+							'catholic-gold': '#D4AF37',
+							'catholic-blue': '#1E3A8A',
+							'catholic-red': '#DC2626'
+						}
+					}
+				}
+			}
+		</script>
+		<!-- SEO Meta Tags -->
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content="https://portal-catolico-9bb38.web.app/" />
+		<meta property="og:title" content="Portal Católico - Recursos e Orações para a Fé Católica" />
+		<meta property="og:description" content="Portal Católico com recursos espirituais, orações, wallpapers de santos, e conteúdo para fortalecer sua fé católica." />
+		<meta property="og:image" content="https://portal-catolico-9bb38.web.app/og-image.jpg" />
+		<!-- Twitter -->
+		<meta property="twitter:card" content="summary_large_image" />
+		<meta property="twitter:url" content="https://portal-catolico-9bb38.web.app/" />
+		<meta property="twitter:title" content="Portal Católico - Recursos e Orações para a Fé Católica" />
+		<meta property="twitter:description" content="Portal Católico com recursos espirituais, orações, wallpapers de santos, e conteúdo para fortalecer sua fé católica." />
+		<meta property="twitter:image" content="https://portal-catolico-9bb38.web.app/og-image.jpg" />
+		<!-- Canonical URL -->
+		<link rel="canonical" href="https://portal-catolico-9bb38.web.app/" />
+		<!-- Additional Meta Tags -->
+		<meta name="author" content="Portal Católico" />
+		<meta name="robots" content="index, follow" />
+		<meta name="language" content="Portuguese" />
+		<meta name="revisit-after" content="7 days" />
+		<!-- Theme Color -->
+		<meta name="theme-color" content="#ffffff" />
+		<script type="module" crossorigin src="/assets/index-0545db43.js"></script>
+		<link rel="stylesheet" href="/assets/index-5fdd9ed7.css">
+		<script type="module">
+window.onerror = (message, source, lineno, colno, errorObj) => {
+	const errorDetails = errorObj ? JSON.stringify({
+		name: errorObj.name,
+		message: errorObj.message,
+		stack: errorObj.stack,
+		source,
+		lineno,
+		colno,
+	}) : null;
+
+	window.parent.postMessage({
+		type: 'horizons-runtime-error',
+		message,
+		error: errorDetails
+	}, '*');
+};
+</script>
+		<script type="module">
+const observer = new MutationObserver((mutations) => {
+	for (const mutation of mutations) {
+		for (const addedNode of mutation.addedNodes) {
+			if (
+				addedNode.nodeType === Node.ELEMENT_NODE &&
+				(
+					addedNode.tagName?.toLowerCase() === 'vite-error-overlay' ||
+					addedNode.classList?.contains('backdrop')
+				)
+			) {
+				handleViteOverlay(addedNode);
+			}
+		}
+	}
+});
+
+observer.observe(document.documentElement, {
+	childList: true,
+	subtree: true
+});
+
+function handleViteOverlay(node) {
+	if (!node.shadowRoot) {
+		return;
+	}
+
+	const backdrop = node.shadowRoot.querySelector('.backdrop');
+
+	if (backdrop) {
+		const overlayHtml = backdrop.outerHTML;
+		const parser = new DOMParser();
+		const doc = parser.parseFromString(overlayHtml, 'text/html');
+		const messageBodyElement = doc.querySelector('.message-body');
+		const fileElement = doc.querySelector('.file');
+		const messageText = messageBodyElement ? messageBodyElement.textContent.trim() : '';
+		const fileText = fileElement ? fileElement.textContent.trim() : '';
+		const error = messageText + (fileText ? ' File:' + fileText : '');
+
+		window.parent.postMessage({
+			type: 'horizons-vite-error',
+			error,
+		}, '*');
+	}
+}
+</script>
+		<script type="module">
+const originalConsoleError = console.error;
+console.error = function(...args) {
+	originalConsoleError.apply(console, args);
+
+	let errorString = '';
+
+	for (let i = 0; i < args.length; i++) {
+		const arg = args[i];
+		if (arg instanceof Error) {
+			errorString = arg.stack || `${arg.name}: ${arg.message}`;
+			break;
+		}
+	}
+
+	if (!errorString) {
+		errorString = args.map(arg => typeof arg === 'object' ? JSON.stringify(arg) : String(arg)).join(' ');
+	}
+
+	window.parent.postMessage({
+		type: 'horizons-console-error',
+		error: errorString
+	}, '*');
+};
+</script>
+		<script type="module">
+const originalFetch = window.fetch;
+
+window.fetch = function(...args) {
+	const url = args[0] instanceof Request ? args[0].url : args[0];
+
+	// Skip WebSocket URLs
+	if (url.startsWith('ws:') || url.startsWith('wss:')) {
+		return originalFetch.apply(this, args);
+	}
+
+	return originalFetch.apply(this, args)
+		.then(async response => {
+			const contentType = response.headers.get('Content-Type') || '';
+
+			// Exclude HTML document responses
+			const isDocumentResponse =
+				contentType.includes('text/html') ||
+				contentType.includes('application/xhtml+xml');
+
+			if (!response.ok && !isDocumentResponse) {
+					const responseClone = response.clone();
+					const errorFromRes = await responseClone.text();
+					const requestUrl = response.url;
+					console.error(`Fetch error from ${requestUrl}: ${errorFromRes}`);
+			}
+
+			return response;
+		})
+		.catch(error => {
+			if (!url.match(/.html?$/i)) {
+				console.error(error);
+			}
+
+			throw error;
+		});
+};
+</script>
+	</head>
+	<body>
+		<div id="root"></div>
+		
+	</body>
+</html>

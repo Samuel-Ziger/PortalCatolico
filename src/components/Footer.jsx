@@ -43,14 +43,13 @@ const Footer = ({ setActiveSection }) => {
           <div>
             <span className="text-lg font-semibold mb-4 block">Redes Sociais</span>
             <div className="space-y-2">
-              <a href="#" className="block text-gray-300 hover:text-white transition-colors">
-                Facebook
-              </a>
-              <a href="#" className="block text-gray-300 hover:text-white transition-colors">
-                Instagram
-              </a>
-              <a href="#" className="block text-gray-300 hover:text-white transition-colors">
-                YouTube
+              <a 
+                href="https://www.instagram.com/pontifex/" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="block text-gray-300 hover:text-white transition-colors"
+              >
+                Instagram do Papa Leão XIV
               </a>
             </div>
           </div>

@@ -1,11 +1,13 @@
 /** @type {import('tailwindcss').Config} */
-module.exports = {
+export default {
 	darkMode: ['class'],
 	content: [
 		'./pages/**/*.{js,jsx}',
 		'./components/**/*.{js,jsx}',
 		'./app/**/*.{js,jsx}',
 		'./src/**/*.{js,jsx}',
+		'./index.html',
+		'./src/**/*.{ts,tsx}',
 	],
 	theme: {
 		container: {
@@ -50,6 +52,9 @@ module.exports = {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))',
 				},
+				'catholic-gold': '#D4AF37',
+				'catholic-blue': '#1E3A8A',
+				'catholic-red': '#DC2626'
 			},
 			borderRadius: {
 				lg: 'var(--radius)',

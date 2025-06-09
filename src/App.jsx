@@ -10,6 +10,7 @@ import WallpapersSection from '@/sections/WallpapersSection';
 import RosarioSection from '@/sections/RosarioSection';
 import OracoesSection from '@/sections/OracoesSection';
 import LiturgicoSection from '@/sections/LiturgicoSection';
+import CalendarioLiturgico from '@/sections/CalendarioLiturgico';
 import NoticiasSection from '@/sections/NoticiasSection';
 import CaminhoNeocatecumenalSection from '@/sections/CaminhoNeocatecumenalSection';
 import DoacaoSection from '@/components/DoacaoSection';
@@ -35,6 +36,7 @@ function App() {
     { id: 'rosario', label: 'Rosário' },
     { id: 'oracoes', label: 'Orações' },
     { id: 'liturgico', label: 'Litúrgico' },
+    { id: 'calendario', label: 'Calendário' },
     { id: 'noticias', label: 'Notícias' },
     { id: 'caminho', label: 'Caminho Neocatecumenal' },
   ];
@@ -54,6 +56,7 @@ function App() {
         {activeSection === 'rosario' && <RosarioSection rosarioHoje={rosarioHoje} />}
         {activeSection === 'oracoes' && <OracoesSection oracoes={oracoes} setSelectedPrayer={setSelectedPrayer} />}
         {activeSection === 'liturgico' && <LiturgicoSection tempoLiturgico={tempoLiturgico} />}
+        {activeSection === 'calendario' && <CalendarioLiturgico />}
         {activeSection === 'noticias' && <NoticiasSection />}
         {activeSection === 'caminho' && <CaminhoNeocatecumenalSection />}
         

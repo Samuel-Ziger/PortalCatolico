@@ -15,7 +15,72 @@ const WallpapersSection = () => {
   const [selectedCategory, setSelectedCategory] = useState('todos');
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
-  const wallpapers = [
+  // Wallpapers de Cristo no topo
+  const wallpapersCristo = [
+    {
+      id: 92,
+      nome: "Cristo",
+      categoria: "cristo",
+      imagem: "/wallpapers/cristo/cristo1.jpeg"
+    },
+    {
+      id: 93,
+      nome: "Cristo",
+      categoria: "cristo",
+      imagem: "/wallpapers/cristo/cristo2.jpeg"
+    },
+    {
+      id: 94,
+      nome: "Cristo",
+      categoria: "cristo",
+      imagem: "/wallpapers/cristo/cristo3.jpeg"
+    },
+    {
+      id: 95,
+      nome: "Cristo",
+      categoria: "cristo",
+      imagem: "/wallpapers/cristo/cristo4.jpeg"
+    },
+    {
+      id: 96,
+      nome: "Cristo",
+      categoria: "cristo",
+      imagem: "/wallpapers/cristo/cristo5.jpeg"
+    },
+    {
+      id: 97,
+      nome: "Cristo",
+      categoria: "cristo",
+      imagem: "/wallpapers/cristo/cristo6.jpeg"
+    },
+    {
+      id: 98,
+      nome: "Cristo",
+      categoria: "cristo",
+      imagem: "/wallpapers/cristo/cristo7.jpeg"
+    },
+    {
+      id: 99,
+      nome: "Cristo",
+      categoria: "cristo",
+      imagem: "/wallpapers/cristo/cristo8.jpeg"
+    },
+    {
+      id: 100,
+      nome: "Cristo",
+      categoria: "cristo",
+      imagem: "/wallpapers/cristo/cristo9.jpeg"
+    },
+    {
+      id: 101,
+      nome: "Cristo",
+      categoria: "cristo",
+      imagem: "/wallpapers/cristo/cristo10.jpeg"
+    }
+  ];
+
+  // Demais wallpapers, exceto Cristo, ordenados por nome
+  const outrosWallpapers = [
     // São Francisco de Assis
     {
       id: 1,
@@ -326,8 +391,260 @@ const WallpapersSection = () => {
       nome: "São Padre Pio",
       categoria: "sao-padre-pio",
       imagem: "/wallpapers/Sao Padre Pio/SaoPadrePio10.jpeg"
+    },
+    // Santa Catarina de Sena
+    {
+      id: 52,
+      nome: "Santa Catarina de Sena",
+      categoria: "santa-catarina",
+      imagem: "/wallpapers/Santa Catarina de Sena/SantaCatarinadeSena1.jpeg"
+    },
+    {
+      id: 53,
+      nome: "Santa Catarina de Sena",
+      categoria: "santa-catarina",
+      imagem: "/wallpapers/Santa Catarina de Sena/SantaCatarinadeSena2.jpeg"
+    },
+    {
+      id: 54,
+      nome: "Santa Catarina de Sena",
+      categoria: "santa-catarina",
+      imagem: "/wallpapers/Santa Catarina de Sena/SantaCatarinadeSena3.jpeg"
+    },
+    {
+      id: 55,
+      nome: "Santa Catarina de Sena",
+      categoria: "santa-catarina",
+      imagem: "/wallpapers/Santa Catarina de Sena/SantaCatarinadeSena4.jpeg"
+    },
+    {
+      id: 56,
+      nome: "Santa Catarina de Sena",
+      categoria: "santa-catarina",
+      imagem: "/wallpapers/Santa Catarina de Sena/SantaCatarinadeSena5.jpeg"
+    },
+    {
+      id: 57,
+      nome: "Santa Catarina de Sena",
+      categoria: "santa-catarina",
+      imagem: "/wallpapers/Santa Catarina de Sena/SantaCatarinadeSena6.jpeg"
+    },
+    {
+      id: 58,
+      nome: "Santa Catarina de Sena",
+      categoria: "santa-catarina",
+      imagem: "/wallpapers/Santa Catarina de Sena/SantaCatarinadeSena7.jpeg"
+    },
+    {
+      id: 59,
+      nome: "Santa Catarina de Sena",
+      categoria: "santa-catarina",
+      imagem: "/wallpapers/Santa Catarina de Sena/SantaCatarinadeSena8.jpeg"
+    },
+    // São José
+    {
+      id: 62,
+      nome: "São José",
+      categoria: "sao-jose",
+      imagem: "/wallpapers/Sao Jose/SaoJose1.jpeg"
+    },
+    {
+      id: 63,
+      nome: "São José",
+      categoria: "sao-jose",
+      imagem: "/wallpapers/Sao Jose/SaoJose2.jpeg"
+    },
+    {
+      id: 64,
+      nome: "São José",
+      categoria: "sao-jose",
+      imagem: "/wallpapers/Sao Jose/SaoJose3.jpeg"
+    },
+    {
+      id: 65,
+      nome: "São José",
+      categoria: "sao-jose",
+      imagem: "/wallpapers/Sao Jose/SaoJose4.jpeg"
+    },
+    {
+      id: 66,
+      nome: "São José",
+      categoria: "sao-jose",
+      imagem: "/wallpapers/Sao Jose/SaoJose5.jpeg"
+    },
+    {
+      id: 67,
+      nome: "São José",
+      categoria: "sao-jose",
+      imagem: "/wallpapers/Sao Jose/SaoJose6.jpeg"
+    },
+    {
+      id: 68,
+      nome: "São José",
+      categoria: "sao-jose",
+      imagem: "/wallpapers/Sao Jose/SaoJose7.jpeg"
+    },
+    {
+      id: 69,
+      nome: "São José",
+      categoria: "sao-jose",
+      imagem: "/wallpapers/Sao Jose/SaoJose8.jpeg"
+    },
+    {
+      id: 70,
+      nome: "São José",
+      categoria: "sao-jose",
+      imagem: "/wallpapers/Sao Jose/SaoJose9.jpeg"
+    },
+    {
+      id: 71,
+      nome: "São José",
+      categoria: "sao-jose",
+      imagem: "/wallpapers/Sao Jose/SaoJose10.jpeg"
+    },
+    // Nossa Senhora
+    {
+      id: 72,
+      nome: "Nossa Senhora",
+      categoria: "nossa-senhora",
+      imagem: "/wallpapers/Nossa Senhora/NossaSenhora1.jpeg"
+    },
+    {
+      id: 73,
+      nome: "Nossa Senhora",
+      categoria: "nossa-senhora",
+      imagem: "/wallpapers/Nossa Senhora/NossaSenhora2.jpeg"
+    },
+    {
+      id: 74,
+      nome: "Nossa Senhora",
+      categoria: "nossa-senhora",
+      imagem: "/wallpapers/Nossa Senhora/NossaSenhora3.jpeg"
+    },
+    {
+      id: 75,
+      nome: "Nossa Senhora",
+      categoria: "nossa-senhora",
+      imagem: "/wallpapers/Nossa Senhora/NossaSenhora4.jpeg"
+    },
+    {
+      id: 76,
+      nome: "Nossa Senhora",
+      categoria: "nossa-senhora",
+      imagem: "/wallpapers/Nossa Senhora/NossaSenhora5.jpeg"
+    },
+    {
+      id: 77,
+      nome: "Nossa Senhora",
+      categoria: "nossa-senhora",
+      imagem: "/wallpapers/Nossa Senhora/NossaSenhora6.jpeg"
+    },
+    {
+      id: 78,
+      nome: "Nossa Senhora",
+      categoria: "nossa-senhora",
+      imagem: "/wallpapers/Nossa Senhora/NossaSenhora7.jpeg"
+    },
+    {
+      id: 79,
+      nome: "Nossa Senhora",
+      categoria: "nossa-senhora",
+      imagem: "/wallpapers/Nossa Senhora/NossaSenhora8.jpeg"
+    },
+    {
+      id: 80,
+      nome: "Nossa Senhora",
+      categoria: "nossa-senhora",
+      imagem: "/wallpapers/Nossa Senhora/NossaSenhora9.jpeg"
+    },
+    {
+      id: 81,
+      nome: "Nossa Senhora",
+      categoria: "nossa-senhora",
+      imagem: "/wallpapers/Nossa Senhora/NossaSenhora10.jpeg"
+    },
+    // São Miguel Arcanjo
+    {
+      id: 82,
+      nome: "São Miguel Arcanjo",
+      categoria: "sao-miguel",
+      imagem: "/wallpapers/Sao Miguel Arcanjo/SaoMiguelArcanjo1.jpeg"
+    },
+    {
+      id: 83,
+      nome: "São Miguel Arcanjo",
+      categoria: "sao-miguel",
+      imagem: "/wallpapers/Sao Miguel Arcanjo/SaoMiguelArcanjo2.jpeg"
+    },
+    {
+      id: 84,
+      nome: "São Miguel Arcanjo",
+      categoria: "sao-miguel",
+      imagem: "/wallpapers/Sao Miguel Arcanjo/SaoMiguelArcanjo3.jpeg"
+    },
+    {
+      id: 85,
+      nome: "São Miguel Arcanjo",
+      categoria: "sao-miguel",
+      imagem: "/wallpapers/Sao Miguel Arcanjo/SaoMiguelArcanjo4.jpeg"
+    },
+    {
+      id: 86,
+      nome: "São Miguel Arcanjo",
+      categoria: "sao-miguel",
+      imagem: "/wallpapers/Sao Miguel Arcanjo/SaoMiguelArcanjo5.jpeg"
+    },
+    {
+      id: 87,
+      nome: "São Miguel Arcanjo",
+      categoria: "sao-miguel",
+      imagem: "/wallpapers/Sao Miguel Arcanjo/SaoMiguelArcanjo6.jpeg"
+    },
+    {
+      id: 88,
+      nome: "São Miguel Arcanjo",
+      categoria: "sao-miguel",
+      imagem: "/wallpapers/Sao Miguel Arcanjo/SaoMiguelArcanjo7.jpeg"
+    },
+    {
+      id: 89,
+      nome: "São Miguel Arcanjo",
+      categoria: "sao-miguel",
+      imagem: "/wallpapers/Sao Miguel Arcanjo/SaoMiguelArcanjo8.jpeg"
+    },
+    {
+      id: 90,
+      nome: "São Miguel Arcanjo",
+      categoria: "sao-miguel",
+      imagem: "/wallpapers/Sao Miguel Arcanjo/SaoMiguelArcanjo9.jpeg"
+    },
+    {
+      id: 91,
+      nome: "São Miguel Arcanjo",
+      categoria: "sao-miguel",
+      imagem: "/wallpapers/Sao Miguel Arcanjo/SaoMiguelArcanjo10.jpeg"
     }
+  ].sort((a, b) => a.nome.localeCompare(b.nome));
+
+  const wallpapers = [
+    ...wallpapersCristo,
+    ...outrosWallpapers
   ];
+
+  // Dropdown de categorias: Cristo no topo, depois ordem alfabética
+  const categorias = [
+    { value: "cristo", label: "Cristo" },
+    { value: "nossa-senhora", label: "Nossa Senhora" },
+    { value: "santa-catarina", label: "Santa Catarina de Sena" },
+    { value: "santa-teresa", label: "Santa Teresa de Ávila" },
+    { value: "santa-terezinha", label: "Santa Terezinha do Menino Jesus" },
+    { value: "sao-francisco", label: "São Francisco de Assis" },
+    { value: "sao-joao-paulo", label: "São João Paulo II" },
+    { value: "sao-jose", label: "São José" },
+    { value: "sao-miguel", label: "São Miguel Arcanjo" },
+    { value: "sao-padre-pio", label: "São Padre Pio" }
+  ].filter((cat, idx, arr) => cat.value !== "cristo").sort((a, b) => a.label.localeCompare(b.label));
+  categorias.unshift({ value: "cristo", label: "Cristo" });
 
   const wallpapersFiltrados = wallpapers.filter(wallpaper => {
     const matchesSearch = wallpaper.nome.toLowerCase().includes(searchTerm.toLowerCase());
@@ -362,7 +679,7 @@ const WallpapersSection = () => {
   };
 
   const renderContent = () => {
-    if (selectedCategory === 'sao-francisco' || selectedCategory === 'santa-teresa' || selectedCategory === 'sao-joao-paulo' || selectedCategory === 'santa-terezinha' || selectedCategory === 'sao-padre-pio') {
+    if (selectedCategory === 'sao-francisco' || selectedCategory === 'santa-teresa' || selectedCategory === 'sao-joao-paulo' || selectedCategory === 'santa-terezinha' || selectedCategory === 'sao-padre-pio' || selectedCategory === 'santa-catarina' || selectedCategory === 'sao-jose' || selectedCategory === 'nossa-senhora' || selectedCategory === 'sao-miguel' || selectedCategory === 'cristo') {
       const wallpapersCategoria = wallpapers.filter(w => w.categoria === selectedCategory);
       return (
         <div className="max-w-4xl mx-auto">
@@ -455,11 +772,9 @@ const WallpapersSection = () => {
               className="px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
             >
               <option value="todos">Todas as categorias</option>
-              <option value="sao-francisco">São Francisco de Assis</option>
-              <option value="santa-teresa">Santa Teresa de Ávila</option>
-              <option value="sao-joao-paulo">São João Paulo II</option>
-              <option value="santa-terezinha">Santa Terezinha do Menino Jesus</option>
-              <option value="sao-padre-pio">São Padre Pio</option>
+              {categorias.map((cat) => (
+                <option key={cat.value} value={cat.value}>{cat.label}</option>
+              ))}
             </select>
           </div>
         </div>
