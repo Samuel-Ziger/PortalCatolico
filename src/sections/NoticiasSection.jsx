@@ -3,31 +3,60 @@ import { Button } from '@/components/ui/button';
 import { toast } from '@/components/ui/use-toast';
 import { ExternalLink } from 'lucide-react';
 
+const RSS_FEEDS = [
+  {
+    nome: 'Vatican News',
+    url: 'https://api.rss2json.com/v1/api.json?rss_url=https://www.vaticannews.va/pt.rss.xml'
+  },
+  {
+    nome: 'Catholic News Agency',
+    url: 'https://api.rss2json.com/v1/api.json?rss_url=https://www.catholicnewsagency.com/rss'
+  },
+  {
+    nome: 'Aleteia',
+    url: 'https://api.rss2json.com/v1/api.json?rss_url=https://pt.aleteia.org/feed/'
+  },
+  {
+    nome: 'Zenit',
+    url: 'https://api.rss2json.com/v1/api.json?rss_url=https://zenit.org/feed/?lang=portuguese'
+  },
+  {
+    nome: 'Canção Nova',
+    url: 'https://api.rss2json.com/v1/api.json?rss_url=https://noticias.cancaonova.com/feed/'
+  }
+];
+
 const NoticiasSection = () => {
   const [news, setNews] = useState([]);
   const [loadingNews, setLoadingNews] = useState(false);
 
   const carregarNoticias = async () => {
     setLoadingNews(true);
+    let allNews = [];
     try {
-      const response = await fetch('https://api.rss2json.com/v1/api.json?rss_url=https://www.vaticannews.va/pt/rss.xml');
-      const data = await response.json();
-      
-      if (data.status === 'ok') {
-        setNews(data.items.slice(0, 10));
-      } else {
-        toast({
-          title: "Erro ao carregar notícias",
-          description: data.message || "Não foi possível buscar as notícias.",
-          variant: "destructive"
-        });
+      for (const feed of RSS_FEEDS) {
+        const response = await fetch(feed.url);
+        const data = await response.json();
+        if (data.status === 'ok') {
+          const noticiasComFonte = data.items.slice(0, 7).map(item => ({ ...item, fonte: feed.nome }));
+          allNews = allNews.concat(noticiasComFonte);
+        } else {
+          toast({
+            title: `Erro ao carregar notícias de ${feed.nome}`,
+            description: data.message || 'Não foi possível buscar as notícias.',
+            variant: 'destructive'
+          });
+        }
       }
+      // Ordena por data decrescente
+      allNews.sort((a, b) => new Date(b.pubDate) - new Date(a.pubDate));
+      setNews(allNews);
     } catch (error) {
       console.error('Erro ao carregar notícias:', error);
       toast({
-        title: "Erro de Rede",
-        description: "Não foi possível conectar ao servidor de notícias.",
-        variant: "destructive"
+        title: 'Erro de Rede',
+        description: 'Não foi possível conectar ao servidor de notícias.',
+        variant: 'destructive'
       });
     } finally {
       setLoadingNews(false);
@@ -54,19 +83,18 @@ const NoticiasSection = () => {
           </div>
         ) : (
           <div className="space-y-6">
-            {news.map((noticia, index) => (
-              <div key={index} className="bg-gray-50 rounded-xl p-6 hover:shadow-lg transition-shadow">
+            {news.map((noticia, idx) => (
+              <div key={idx} className="bg-white rounded-xl shadow-md p-6 mb-6 fade-in">
                 <div className="flex flex-col md:flex-row gap-4">
                   <div className="flex-1">
                     <h3 className="text-xl font-semibold text-gray-800 mb-3">
                       {noticia.title}
                     </h3>
-                    <p className="text-gray-600 mb-4 line-clamp-3">
-                      {noticia.description || "Sem descrição disponível."}
-                    </p>
+                    <p className="text-gray-600 mb-4 line-clamp-3" dangerouslySetInnerHTML={{ __html: noticia.description || "Sem descrição disponível." }} />
                     <div className="flex items-center justify-between">
                       <p className="text-sm text-gray-500">
-                        {new Date(noticia.pubDate).toLocaleDateString('pt-BR')}
+                        {new Date(noticia.pubDate).toLocaleDateString('pt-BR')}<br/>
+                        <span className="italic text-xs text-blue-700">{noticia.fonte}</span>
                       </p>
                       <a 
                         href={noticia.link}
