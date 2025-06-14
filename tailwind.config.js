@@ -54,7 +54,13 @@ export default {
 				},
 				'catholic-gold': '#D4AF37',
 				'catholic-blue': '#1E3A8A',
-				'catholic-red': '#DC2626'
+				'catholic-red': '#DC2626',
+				dark: {
+					bg: '#1a1a1a',
+					card: '#2d2d2d',
+					text: '#e5e5e5',
+					border: '#404040',
+				}
 			},
 			borderRadius: {
 				lg: 'var(--radius)',

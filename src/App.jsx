@@ -16,6 +16,7 @@ import CaminhoNeocatecumenalSection from '@/sections/CaminhoNeocatecumenalSectio
 import DoacaoSection from '@/components/DoacaoSection';
 import AdSenseSpace from '@/components/AdSenseSpace';
 import OracaoModal from '@/components/OracaoModal';
+import { ThemeProvider } from '@/contexts/ThemeContext';
 
 import { versiculos, frasesCatolicas, misteriosRosario, oracoes, santos } from '@/data/catholicData';
 import { getVersiculoDoDia, getRosarioDoDia, getTempoLiturgico } from '@/lib/dateUtils';
@@ -42,37 +43,39 @@ function App() {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50">
-      <Toaster />
-      
-      <Header activeSection={activeSection} setActiveSection={setActiveSection} navItems={navItems} />
-      <MobileNavigation activeSection={activeSection} setActiveSection={setActiveSection} navItems={navItems} />
-
-      <main className="container mx-auto px-4 py-8">
-        {activeSection === 'home' && <HomeSection setActiveSection={setActiveSection} versiculoHoje={versiculoHoje} rosarioHoje={rosarioHoje} />}
-        {activeSection === 'versiculo' && <VersiculoSection versiculoHoje={versiculoHoje} />}
-        {activeSection === 'frases' && <FrasesSection frasesCatolicas={frasesCatolicas} />}
-        {activeSection === 'wallpapers' && <WallpapersSection santos={santos} />}
-        {activeSection === 'rosario' && <RosarioSection rosarioHoje={rosarioHoje} />}
-        {activeSection === 'oracoes' && <OracoesSection oracoes={oracoes} setSelectedPrayer={setSelectedPrayer} />}
-        {activeSection === 'liturgico' && <LiturgicoSection tempoLiturgico={tempoLiturgico} />}
-        {activeSection === 'calendario' && <CalendarioLiturgico />}
-        {activeSection === 'noticias' && <NoticiasSection />}
-        {activeSection === 'caminho' && <CaminhoNeocatecumenalSection />}
+    <ThemeProvider>
+      <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-dark-bg dark:via-dark-bg dark:to-dark-bg">
+        <Toaster />
         
-        <DoacaoSection />
-        <AdSenseSpace />
-      </main>
+        <Header activeSection={activeSection} setActiveSection={setActiveSection} navItems={navItems} />
+        <MobileNavigation activeSection={activeSection} setActiveSection={setActiveSection} navItems={navItems} />
 
-      <Footer setActiveSection={setActiveSection} />
+        <main className="container mx-auto px-4 py-8">
+          {activeSection === 'home' && <HomeSection setActiveSection={setActiveSection} versiculoHoje={versiculoHoje} rosarioHoje={rosarioHoje} />}
+          {activeSection === 'versiculo' && <VersiculoSection versiculoHoje={versiculoHoje} />}
+          {activeSection === 'frases' && <FrasesSection frasesCatolicas={frasesCatolicas} />}
+          {activeSection === 'wallpapers' && <WallpapersSection santos={santos} />}
+          {activeSection === 'rosario' && <RosarioSection rosarioHoje={rosarioHoje} />}
+          {activeSection === 'oracoes' && <OracoesSection oracoes={oracoes} setSelectedPrayer={setSelectedPrayer} />}
+          {activeSection === 'liturgico' && <LiturgicoSection tempoLiturgico={tempoLiturgico} />}
+          {activeSection === 'calendario' && <CalendarioLiturgico />}
+          {activeSection === 'noticias' && <NoticiasSection />}
+          {activeSection === 'caminho' && <CaminhoNeocatecumenalSection />}
+          
+          <DoacaoSection />
+          <AdSenseSpace />
+        </main>
 
-      {selectedPrayer && (
-        <OracaoModal 
-          oracao={oracoes[selectedPrayer]} 
-          onClose={() => setSelectedPrayer(null)} 
-        />
-      )}
-    </div>
+        <Footer setActiveSection={setActiveSection} />
+
+        {selectedPrayer && (
+          <OracaoModal 
+            oracao={oracoes[selectedPrayer]} 
+            onClose={() => setSelectedPrayer(null)} 
+          />
+        )}
+      </div>
+    </ThemeProvider>
   );
 }
 

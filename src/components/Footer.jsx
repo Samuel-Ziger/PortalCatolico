@@ -3,7 +3,7 @@ import { Cross } from 'lucide-react';
 
 const Footer = ({ setActiveSection }) => {
   return (
-    <footer className="bg-gray-800 text-white mt-16">
+    <footer className="bg-gray-800 dark:bg-dark-card text-white mt-16">
       <div className="container mx-auto px-4 py-8">
         <div className="grid md:grid-cols-3 gap-8">
           <div>
@@ -11,7 +11,7 @@ const Footer = ({ setActiveSection }) => {
               <Cross className="h-6 w-6" />
               <span className="text-xl font-bold">Portal Católico</span>
             </div>
-            <p className="text-gray-300">
+            <p className="text-gray-300 dark:text-gray-400">
               Um espaço de fé, oração e reflexão para fortalecer sua jornada espiritual.
             </p>
           </div>
@@ -21,19 +21,19 @@ const Footer = ({ setActiveSection }) => {
             <div className="space-y-2">
               <button 
                 onClick={() => setActiveSection('versiculo')}
-                className="block text-gray-300 hover:text-white transition-colors"
+                className="block text-gray-300 dark:text-gray-400 hover:text-white dark:hover:text-gray-200 transition-colors"
               >
                 Versículo do Dia
               </button>
               <button 
                 onClick={() => setActiveSection('oracoes')}
-                className="block text-gray-300 hover:text-white transition-colors"
+                className="block text-gray-300 dark:text-gray-400 hover:text-white dark:hover:text-gray-200 transition-colors"
               >
                 Orações
               </button>
               <button 
                 onClick={() => setActiveSection('rosario')}
-                className="block text-gray-300 hover:text-white transition-colors"
+                className="block text-gray-300 dark:text-gray-400 hover:text-white dark:hover:text-gray-200 transition-colors"
               >
                 Rosário
               </button>
