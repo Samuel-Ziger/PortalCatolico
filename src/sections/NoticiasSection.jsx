@@ -9,10 +9,6 @@ const RSS_FEEDS = [
     url: 'https://api.rss2json.com/v1/api.json?rss_url=https://www.vaticannews.va/pt.rss.xml'
   },
   {
-    nome: 'Catholic News Agency',
-    url: 'https://api.rss2json.com/v1/api.json?rss_url=https://www.catholicnewsagency.com/rss'
-  },
-  {
     nome: 'Aleteia',
     url: 'https://api.rss2json.com/v1/api.json?rss_url=https://pt.aleteia.org/feed/'
   },
