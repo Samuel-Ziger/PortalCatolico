@@ -1,6 +1,7 @@
 import React, { useState, useRef } from 'react';
 import { Book, Heart, Cross, Users, Shield, Star, Clock, Church } from 'lucide-react';
 import { Card } from '@components/ui/card';
+import SEO from '@components/SEO';
 
 const OracoesSection = () => {
   const [selectedCategory, setSelectedCategory] = useState(null);
@@ -859,79 +860,87 @@ Amém.`,
   ];
 
   return (
-    <div className="max-w-7xl mx-auto">
-      <div className="bg-white dark:bg-dark-card rounded-2xl shadow-xl p-8">
-        <div className="text-center mb-8">
-          <Heart className="h-12 w-12 text-red-500 mx-auto mb-4" />
-          <h2 className="text-3xl font-bold text-gray-800 dark:text-dark-text mb-2">Orações</h2>
-          <p className="text-gray-600 dark:text-gray-400">Orações tradicionais e devocionais da Igreja Católica</p>
-        </div>
+    <>
+      <SEO 
+        title="Orações Católicas"
+        description="Coleção completa de orações católicas tradicionais, incluindo Pai Nosso, Ave Maria, Credo, Ladainhas e orações aos santos. Recursos para fortalecer sua vida espiritual."
+        keywords="orações católicas, pai nosso, ave maria, credo, ladainha, orações aos santos, orações tradicionais, orações marianas, orações de proteção, orações de intercessão"
+        canonical="/oracoes"
+      />
+      <div className="max-w-7xl mx-auto">
+        <div className="bg-white dark:bg-dark-card rounded-2xl shadow-xl p-8">
+          <div className="text-center mb-8">
+            <Heart className="h-12 w-12 text-red-500 mx-auto mb-4" />
+            <h2 className="text-3xl font-bold text-gray-800 dark:text-dark-text mb-2">Orações</h2>
+            <p className="text-gray-600 dark:text-gray-400">Orações tradicionais e devocionais da Igreja Católica</p>
+          </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {categorias.map((categoria) => (
-            <Card
-              key={categoria.id}
-              className="p-6 cursor-pointer hover:shadow-lg transition-all border-l-4 border-blue-500 dark:border-blue-400"
-              onClick={() => handleCategoryClick(categoria)}
-            >
-              <div className="flex items-start space-x-4">
-                {categoria.icone}
-                <div>
-                  <h3 className="text-xl font-semibold text-gray-800 dark:text-dark-text mb-2">
-                    {categoria.titulo}
-                  </h3>
-                  <p className="text-gray-600 dark:text-gray-400">
-                    {categoria.descricao}
-                  </p>
-                </div>
-              </div>
-            </Card>
-          ))}
-        </div>
-
-        {selectedCategory && (
-          <div ref={explicacaoRef} className="mt-8 bg-gray-50 dark:bg-gray-800 rounded-xl p-6">
-            <div className="flex items-center justify-between mb-6">
-              <div className="flex items-center space-x-4">
-                {selectedCategory.icone}
-                <h3 className="text-2xl font-bold text-gray-800 dark:text-dark-text">
-                  {selectedCategory.titulo}
-                </h3>
-              </div>
-              <button
-                onClick={() => setSelectedCategory(null)}
-                className="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {categorias.map((categoria) => (
+              <Card
+                key={categoria.id}
+                className="p-6 cursor-pointer hover:shadow-lg transition-all border-l-4 border-blue-500 dark:border-blue-400"
+                onClick={() => handleCategoryClick(categoria)}
               >
-                Fechar
-              </button>
-            </div>
-
-            <div className="space-y-6">
-              {selectedCategory.conteudo.map((item, index) => (
-                <div
-                  key={index}
-                  className="bg-white dark:bg-dark-card rounded-lg p-6 shadow-sm"
-                >
-                  <h4 className="text-lg font-semibold text-gray-800 dark:text-dark-text mb-2">
-                    {item.titulo}
-                  </h4>
-                  <p className="text-sm text-blue-600 dark:text-blue-400 mb-3">
-                    {item.paragrafos}
-                  </p>
-                  <p className="text-gray-600 dark:text-gray-400 mb-3 whitespace-pre-line">
-                    {item.explicacao}
-                  </p>
-                  <div className="mt-3 pt-3 border-t border-gray-200 dark:border-gray-700">
-                    <p className="text-sm font-medium text-gray-700 dark:text-gray-300">Base Bíblica:</p>
-                    <p className="text-sm text-gray-600 dark:text-gray-400">{item.baseBiblica}</p>
+                <div className="flex items-start space-x-4">
+                  {categoria.icone}
+                  <div>
+                    <h3 className="text-xl font-semibold text-gray-800 dark:text-dark-text mb-2">
+                      {categoria.titulo}
+                    </h3>
+                    <p className="text-gray-600 dark:text-gray-400">
+                      {categoria.descricao}
+                    </p>
                   </div>
                 </div>
-              ))}
-            </div>
+              </Card>
+            ))}
           </div>
-        )}
+
+          {selectedCategory && (
+            <div ref={explicacaoRef} className="mt-8 bg-gray-50 dark:bg-gray-800 rounded-xl p-6">
+              <div className="flex items-center justify-between mb-6">
+                <div className="flex items-center space-x-4">
+                  {selectedCategory.icone}
+                  <h3 className="text-2xl font-bold text-gray-800 dark:text-dark-text">
+                    {selectedCategory.titulo}
+                  </h3>
+                </div>
+                <button
+                  onClick={() => setSelectedCategory(null)}
+                  className="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"
+                >
+                  Fechar
+                </button>
+              </div>
+
+              <div className="space-y-6">
+                {selectedCategory.conteudo.map((item, index) => (
+                  <div
+                    key={index}
+                    className="bg-white dark:bg-dark-card rounded-lg p-6 shadow-sm"
+                  >
+                    <h4 className="text-lg font-semibold text-gray-800 dark:text-dark-text mb-2">
+                      {item.titulo}
+                    </h4>
+                    <p className="text-sm text-blue-600 dark:text-blue-400 mb-3">
+                      {item.paragrafos}
+                    </p>
+                    <p className="text-gray-600 dark:text-gray-400 mb-3 whitespace-pre-line">
+                      {item.explicacao}
+                    </p>
+                    <div className="mt-3 pt-3 border-t border-gray-200 dark:border-gray-700">
+                      <p className="text-sm font-medium text-gray-700 dark:text-gray-300">Base Bíblica:</p>
+                      <p className="text-sm text-gray-600 dark:text-gray-400">{item.baseBiblica}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 
