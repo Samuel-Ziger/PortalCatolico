@@ -869,13 +869,13 @@ Amém.`,
       />
       <div className="max-w-7xl mx-auto">
         <div className="bg-white dark:bg-dark-card rounded-2xl shadow-xl p-8">
-          <div className="text-center mb-8">
+        <div className="text-center mb-8">
             <Heart className="h-12 w-12 text-red-500 mx-auto mb-4" />
             <h2 className="text-3xl font-bold text-gray-800 dark:text-dark-text mb-2">Orações</h2>
             <p className="text-gray-600 dark:text-gray-400">Orações tradicionais e devocionais da Igreja Católica</p>
-          </div>
+        </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {categorias.map((categoria) => (
               <Card
                 key={categoria.id}

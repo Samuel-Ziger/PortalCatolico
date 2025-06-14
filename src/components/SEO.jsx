@@ -8,6 +8,9 @@ const SEO = ({ title, description, keywords, canonical }) => {
 
   return (
     <Helmet>
+      {/* Google AdSense */}
+      <meta name="google-adsense-account" content="ca-pub-6284155976372801" />
+
       {/* Título */}
       <title>{title ? `${title} | Portal Católico` : defaultTitle}</title>
       <meta property="og:title" content={title ? `${title} | Portal Católico` : defaultTitle} />

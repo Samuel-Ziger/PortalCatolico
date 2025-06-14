@@ -1,66 +1,82 @@
 import React from 'react';
-import { Book, Heart, Star, Download, GraduationCap } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { Book, Cross, Heart, Users, Calendar, Clock, Star, Download, GraduationCap, Church, Image } from 'lucide-react';
+import ChurchTimeline from '../components/ChurchTimeline';
 
 const HomeSection = ({ setActiveSection, versiculoHoje, rosarioHoje }) => {
   return (
-    <div className="space-y-8">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
       {/* Hero Section */}
       <div className="text-center bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-2xl p-8 shadow-xl">
-        <h2 className="text-4xl font-bold mb-4">Bem-vindo ao Portal Católico</h2>
-        <p className="text-xl opacity-90">
-          Um espaço de fé, oração e reflexão para fortalecer sua jornada espiritual
-        </p>
+        <h1 className="text-4xl font-bold mb-4">Bem-vindo ao Portal Católico</h1>
+        <p className="text-xl mb-8">Seu espaço de fé, oração e formação católica</p>
+        <div className="flex justify-center gap-4">
+          <button
+            onClick={() => setActiveSection('oracoes')}
+            className="bg-white text-blue-600 px-6 py-3 rounded-lg font-semibold hover:bg-blue-50 transition-colors"
+          >
+            Orações
+          </button>
+          <button
+            onClick={() => setActiveSection('ensinamentos')}
+            className="bg-white text-blue-600 px-6 py-3 rounded-lg font-semibold hover:bg-blue-50 transition-colors"
+          >
+            Ensinamentos
+          </button>
+        </div>
       </div>
 
-      {/* Quick Access Cards */}
-      <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-        <div 
-          onClick={() => setActiveSection('versiculo')}
-          className="bg-white dark:bg-dark-card rounded-xl p-6 shadow-lg hover:shadow-xl transition-all cursor-pointer border-l-4 border-blue-500"
-        >
-          <Book className="h-8 w-8 text-blue-500 mb-3" />
-          <h3 className="font-semibold text-gray-800 dark:text-dark-text mb-2">Versículo do Dia</h3>
-          <p className="text-gray-600 dark:text-gray-400 text-sm">Reflexão diária com a Palavra de Deus</p>
-        </div>
-
-        <div 
-          onClick={() => setActiveSection('rosario')}
-          className="bg-white dark:bg-dark-card rounded-xl p-6 shadow-lg hover:shadow-xl transition-all cursor-pointer border-l-4 border-purple-500"
-        >
-          <Heart className="h-8 w-8 text-purple-500 mb-3" />
-          <h3 className="font-semibold text-gray-800 dark:text-dark-text mb-2">Rosário do Dia</h3>
-          <p className="text-gray-600 dark:text-gray-400 text-sm">Mistérios para meditar hoje</p>
-        </div>
-
+      {/* Features Section */}
+      <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mt-10">
         <div 
           onClick={() => setActiveSection('oracoes')}
-          className="bg-white dark:bg-dark-card rounded-xl p-6 shadow-lg hover:shadow-xl transition-all cursor-pointer border-l-4 border-green-500"
+          className="bg-white dark:bg-dark-card rounded-xl p-6 shadow-lg cursor-pointer hover:shadow-xl transition-shadow"
         >
-          <Star className="h-8 w-8 text-green-500 mb-3" />
-          <h3 className="font-semibold text-gray-800 dark:text-dark-text mb-2">Orações</h3>
-          <p className="text-gray-600 dark:text-gray-400 text-sm">Coleção de orações tradicionais</p>
-        </div>
-
-        <div 
-          onClick={() => setActiveSection('wallpapers')}
-          className="bg-white dark:bg-dark-card rounded-xl p-6 shadow-lg hover:shadow-xl transition-all cursor-pointer border-l-4 border-orange-500"
-        >
-          <Download className="h-8 w-8 text-orange-500 mb-3" />
-          <h3 className="font-semibold text-gray-800 dark:text-dark-text mb-2">Wallpapers</h3>
-          <p className="text-gray-600 dark:text-gray-400 text-sm">Imagens religiosas para download</p>
+          <div className="flex items-center justify-center w-12 h-12 bg-blue-100 dark:bg-blue-900 rounded-lg mb-4">
+            <Heart className="h-6 w-6 text-blue-600 dark:text-blue-400" />
+          </div>
+          <h3 className="text-lg font-semibold text-gray-800 dark:text-dark-text mb-2">Orações</h3>
+          <p className="text-gray-600 dark:text-gray-400">Orações tradicionais e devocionais da Igreja</p>
         </div>
 
         <div 
           onClick={() => setActiveSection('ensinamentos')}
-          className="bg-white dark:bg-dark-card rounded-xl p-6 shadow-lg hover:shadow-xl transition-all cursor-pointer border-l-4 border-yellow-500"
+          className="bg-white dark:bg-dark-card rounded-xl p-6 shadow-lg cursor-pointer hover:shadow-xl transition-shadow"
         >
-          <GraduationCap className="h-8 w-8 text-yellow-500 mb-3" />
-          <h3 className="font-semibold text-gray-800 dark:text-dark-text mb-2">Ensinamentos</h3>
-          <p className="text-gray-600 dark:text-gray-400 text-sm">Fundamentos da fé católica</p>
+          <div className="flex items-center justify-center w-12 h-12 bg-purple-100 dark:bg-purple-900 rounded-lg mb-4">
+            <Book className="h-6 w-6 text-purple-600 dark:text-purple-400" />
+          </div>
+          <h3 className="text-lg font-semibold text-gray-800 dark:text-dark-text mb-2">Ensinamentos</h3>
+          <p className="text-gray-600 dark:text-gray-400">Doutrina e formação católica</p>
+        </div>
+
+        <div 
+          onClick={() => setActiveSection('wallpapers')}
+          className="bg-white dark:bg-dark-card rounded-xl p-6 shadow-lg cursor-pointer hover:shadow-xl transition-shadow"
+        >
+          <div className="flex items-center justify-center w-12 h-12 bg-pink-100 dark:bg-pink-900 rounded-lg mb-4">
+            <Image className="h-6 w-6 text-pink-600 dark:text-pink-400" />
+          </div>
+          <h3 className="text-lg font-semibold text-gray-800 dark:text-dark-text mb-2">Wallpaper</h3>
+          <p className="text-gray-600 dark:text-gray-400">Baixe imagens católicas para seu dispositivo</p>
+        </div>
+
+        <div 
+          onClick={() => setActiveSection('calendario')}
+          className="bg-white dark:bg-dark-card rounded-xl p-6 shadow-lg cursor-pointer hover:shadow-xl transition-shadow"
+        >
+          <div className="flex items-center justify-center w-12 h-12 bg-green-100 dark:bg-green-900 rounded-lg mb-4">
+            <Calendar className="h-6 w-6 text-green-600 dark:text-green-400" />
+          </div>
+          <h3 className="text-lg font-semibold text-gray-800 dark:text-dark-text mb-2">Calendário Litúrgico</h3>
+          <p className="text-gray-600 dark:text-gray-400">Datas e celebrações importantes</p>
         </div>
       </div>
 
-      {/* Today's Highlights */}
+      {/* Espaço extra para separar as seções */}
+      <div className="my-10" />
+
+      {/* Cards Versículo e Rosário */}
       <div className="grid md:grid-cols-2 gap-6">
         <div className="bg-white dark:bg-dark-card rounded-xl p-6 shadow-lg">
           <h3 className="text-xl font-semibold text-gray-800 dark:text-dark-text mb-4">Versículo de Hoje</h3>
@@ -78,6 +94,14 @@ const HomeSection = ({ setActiveSection, versiculoHoje, rosarioHoje }) => {
           </p>
         </div>
       </div>
+
+      {/* Church Timeline Section */}
+      <ChurchTimeline />
+
+      {/* Footer */}
+      <footer className="mt-12 text-center text-gray-600 dark:text-gray-400">
+        <p>© 2024 Portal Católico. Todos os direitos reservados.</p>
+      </footer>
     </div>
   );
 };
