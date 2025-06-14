@@ -1,25 +1,26 @@
 import React, { useState, useEffect } from 'react';
-import { Toaster } from '@/components/ui/toaster';
-import Header from '@/components/Header';
-import MobileNavigation from '@/components/MobileNavigation';
-import Footer from '@/components/Footer';
-import HomeSection from '@/sections/HomeSection';
-import VersiculoSection from '@/sections/VersiculoSection';
-import FrasesSection from '@/sections/FrasesSection';
-import WallpapersSection from '@/sections/WallpapersSection';
-import RosarioSection from '@/sections/RosarioSection';
-import OracoesSection from '@/sections/OracoesSection';
-import LiturgicoSection from '@/sections/LiturgicoSection';
-import CalendarioLiturgico from '@/sections/CalendarioLiturgico';
-import NoticiasSection from '@/sections/NoticiasSection';
-import CaminhoNeocatecumenalSection from '@/sections/CaminhoNeocatecumenalSection';
-import DoacaoSection from '@/components/DoacaoSection';
-import AdSenseSpace from '@/components/AdSenseSpace';
-import OracaoModal from '@/components/OracaoModal';
-import { ThemeProvider } from '@/contexts/ThemeContext';
+import { Toaster } from '@components/ui/toaster';
+import Header from '@components/Header';
+import MobileNavigation from '@components/MobileNavigation';
+import Footer from '@components/Footer';
+import HomeSection from '@sections/HomeSection';
+import VersiculoSection from '@sections/VersiculoSection';
+import FrasesSection from '@sections/FrasesSection';
+import WallpapersSection from '@sections/WallpapersSection';
+import RosarioSection from '@sections/RosarioSection';
+import OracoesSection from '@sections/OracoesSection';
+import LiturgicoSection from '@sections/LiturgicoSection';
+import CalendarioLiturgico from '@sections/CalendarioLiturgico';
+import NoticiasSection from '@sections/NoticiasSection';
+import CaminhoNeocatecumenalSection from '@sections/CaminhoNeocatecumenalSection';
+import EnsinamentosSection from '@sections/EnsinamentosSection';
+import DoacaoSection from '@components/DoacaoSection';
+import AdSenseSpace from '@components/AdSenseSpace';
+import OracaoModal from '@components/OracaoModal';
+import { ThemeProvider } from '@contexts/ThemeContext';
 
-import { versiculos, frasesCatolicas, misteriosRosario, oracoes, santos } from '@/data/catholicData';
-import { getVersiculoDoDia, getRosarioDoDia, getTempoLiturgico } from '@/lib/dateUtils';
+import { versiculos, frasesCatolicas, misteriosRosario, oracoes, santos } from '@data/catholicData';
+import { getVersiculoDoDia, getRosarioDoDia, getTempoLiturgico } from '@lib/dateUtils';
 
 function App() {
   const [activeSection, setActiveSection] = useState('home');
@@ -40,6 +41,7 @@ function App() {
     { id: 'calendario', label: 'Calendário' },
     { id: 'noticias', label: 'Notícias' },
     { id: 'caminho', label: 'Caminho Neocatecumenal' },
+    { id: 'ensinamentos', label: 'Ensinamentos' },
   ];
 
   return (
@@ -61,6 +63,7 @@ function App() {
           {activeSection === 'calendario' && <CalendarioLiturgico />}
           {activeSection === 'noticias' && <NoticiasSection />}
           {activeSection === 'caminho' && <CaminhoNeocatecumenalSection />}
+          {activeSection === 'ensinamentos' && <EnsinamentosSection />}
           
           <DoacaoSection />
           <AdSenseSpace />

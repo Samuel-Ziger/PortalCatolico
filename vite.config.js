@@ -204,9 +204,14 @@ export default defineConfig({
 		allowedHosts: true,
 	},
 	resolve: {
-		extensions: ['.jsx', '.js', '.tsx', '.ts', '.json', ],
+		extensions: ['.jsx', '.js', '.tsx', '.ts', '.json'],
 		alias: {
 			'@': path.resolve(__dirname, './src'),
+			'@components': path.resolve(__dirname, './src/components'),
+			'@lib': path.resolve(__dirname, './src/lib'),
+			'@sections': path.resolve(__dirname, './src/sections'),
+			'@contexts': path.resolve(__dirname, './src/contexts'),
+			'@data': path.resolve(__dirname, './src/data'),
 		},
 	},
 	build: {
