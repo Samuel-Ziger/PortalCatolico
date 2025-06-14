@@ -743,50 +743,52 @@ const WallpapersSection = () => {
   };
 
   return (
-    <div className="max-w-6xl mx-auto">
-      <div className="bg-white rounded-2xl shadow-xl p-8">
-        <div className="text-center mb-8">
-          <Download className="h-12 w-12 text-orange-500 mx-auto mb-4" />
-          <h2 className="text-3xl font-bold text-gray-800 mb-2">Galeria de Wallpapers</h2>
-          <p className="text-gray-600">Imagens religiosas para download</p>
-        </div>
+    <div className="min-h-screen bg-white dark:bg-dark-bg">
+      <div className="max-w-6xl mx-auto">
+        <div className="bg-white rounded-2xl shadow-xl p-8">
+          <div className="text-center mb-8">
+            <Download className="h-12 w-12 text-orange-500 mx-auto mb-4" />
+            <h2 className="text-3xl font-bold text-gray-800 mb-2">Galeria de Wallpapers</h2>
+            <p className="text-gray-600">Imagens religiosas para download</p>
+          </div>
 
-        {/* Filtros */}
-        <div className="mb-8 space-y-4">
-          <div className="flex flex-col md:flex-row gap-4">
-            <div className="flex-1">
-              <div className="relative">
-                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-5 w-5" />
-                <input
-                  type="text"
-                  placeholder="Buscar santo..."
-                  value={searchTerm}
-                  onChange={(e) => setSearchTerm(e.target.value)}
-                  className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
-                />
+          {/* Filtros */}
+          <div className="mb-8 space-y-4">
+            <div className="flex flex-col md:flex-row gap-4">
+              <div className="flex-1">
+                <div className="relative">
+                  <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-5 w-5" />
+                  <input
+                    type="text"
+                    placeholder="Buscar santo..."
+                    value={searchTerm}
+                    onChange={(e) => setSearchTerm(e.target.value)}
+                    className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+                  />
+                </div>
               </div>
+              <select
+                value={selectedCategory}
+                onChange={(e) => setSelectedCategory(e.target.value)}
+                className="px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+              >
+                <option value="todos">Todas as categorias</option>
+                {categorias.map((cat) => (
+                  <option key={cat.value} value={cat.value}>{cat.label}</option>
+                ))}
+              </select>
             </div>
-            <select
-              value={selectedCategory}
-              onChange={(e) => setSelectedCategory(e.target.value)}
-              className="px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
-            >
-              <option value="todos">Todas as categorias</option>
-              {categorias.map((cat) => (
-                <option key={cat.value} value={cat.value}>{cat.label}</option>
-              ))}
-            </select>
           </div>
+
+          {/* Conteúdo */}
+          {renderContent()}
+
+          {wallpapersFiltrados.length === 0 && (
+            <div className="text-center py-12">
+              <p className="text-gray-500 text-lg">Nenhum wallpaper encontrado com os filtros aplicados.</p>
+            </div>
+          )}
         </div>
-
-        {/* Conteúdo */}
-        {renderContent()}
-
-        {wallpapersFiltrados.length === 0 && (
-          <div className="text-center py-12">
-            <p className="text-gray-500 text-lg">Nenhum wallpaper encontrado com os filtros aplicados.</p>
-          </div>
-        )}
       </div>
     </div>
   );
