@@ -62,7 +62,7 @@ const HomeSection = ({ setActiveSection, versiculoHoje, rosarioHoje }) => {
         </div>
 
         <div 
-          onClick={() => setActiveSection('calendario')}
+          onClick={() => setActiveSection('liturgico')}
           className="bg-white dark:bg-dark-card rounded-xl p-6 shadow-lg cursor-pointer hover:shadow-xl transition-shadow"
         >
           <div className="flex items-center justify-center w-12 h-12 bg-green-100 dark:bg-green-900 rounded-lg mb-4">

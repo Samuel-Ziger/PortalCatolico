@@ -58,7 +58,7 @@ const TemposLiturgicos = () => {
       <h2 className="text-3xl font-bold text-center mb-8">Tempos Litúrgicos e Suas Cores</h2>
       <div className="space-y-8">
         {temposLiturgicos.map((tempo, index) => (
-          <div key={index} className="bg-white rounded-lg shadow-lg p-6">
+          <div key={index} className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6">
             <div className="flex items-center mb-4">
               <div 
                 className="w-8 h-8 rounded-full mr-4"
@@ -71,13 +71,13 @@ const TemposLiturgicos = () => {
                   border: tempo.cor === "Branco" ? "1px solid #ccc" : "none"
                 }}
               />
-              <h3 className="text-xl font-semibold">{tempo.nome}</h3>
+              <h3 className="text-xl font-semibold text-gray-800 dark:text-dark-text">{tempo.nome}</h3>
             </div>
             <div className="space-y-2">
-              <p className="text-gray-600"><span className="font-semibold">Período:</span> {tempo.periodo}</p>
-              <p className="text-gray-600"><span className="font-semibold">Cor:</span> {tempo.cor}</p>
-              <p className="text-gray-600"><span className="font-semibold">Significado da Cor:</span> {tempo.significado}</p>
-              <p className="text-gray-700 mt-4">{tempo.descricao}</p>
+              <p className="text-gray-600 dark:text-gray-300"><span className="font-semibold">Período:</span> {tempo.periodo}</p>
+              <p className="text-gray-600 dark:text-gray-300"><span className="font-semibold">Cor:</span> {tempo.cor}</p>
+              <p className="text-gray-600 dark:text-gray-300"><span className="font-semibold">Significado da Cor:</span> {tempo.significado}</p>
+              <p className="text-gray-700 dark:text-gray-300 mt-4">{tempo.descricao}</p>
             </div>
           </div>
         ))}

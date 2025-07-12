@@ -688,7 +688,7 @@ const WallpapersSection = () => {
               {wallpapersCategoria.map((wallpaper) => (
                 <CarouselItem key={wallpaper.id}>
                   <div className="p-1">
-                    <div className="bg-white rounded-xl p-4 shadow-lg">
+                    <div className="bg-white dark:bg-dark-card rounded-xl p-4 shadow-lg">
                       <div className="relative aspect-[16/9] w-full overflow-hidden rounded-lg">
                         <img
                           src={wallpaper.imagem}
@@ -720,15 +720,15 @@ const WallpapersSection = () => {
     return (
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
         {wallpapersFiltrados.map((wallpaper) => (
-          <div key={wallpaper.id} className="bg-gray-50 rounded-xl p-6 text-center hover:shadow-lg transition-shadow">
-            <div className="w-full h-48 bg-gradient-to-br from-blue-100 to-purple-100 rounded-lg mb-4 flex items-center justify-center overflow-hidden">
+          <div key={wallpaper.id} className="bg-gray-50 dark:bg-gray-800 rounded-xl p-6 text-center hover:shadow-lg transition-shadow">
+            <div className="w-full h-48 bg-gradient-to-br from-blue-100 to-purple-100 dark:from-gray-700 dark:to-gray-600 rounded-lg mb-4 flex items-center justify-center overflow-hidden">
               <img   
                 className="w-full h-full object-cover rounded-lg hover:scale-105 transition-transform duration-300" 
                 alt={`Wallpaper de ${wallpaper.nome}`}
                 src={wallpaper.imagem}
               />
             </div>
-            <h3 className="font-semibold text-gray-800 mb-3">{wallpaper.nome}</h3>
+            <h3 className="font-semibold text-gray-800 dark:text-dark-text mb-3">{wallpaper.nome}</h3>
             <Button 
               onClick={() => handleDownload(wallpaper.imagem)}
               className="w-full bg-orange-500 hover:bg-orange-600 text-white"
@@ -745,11 +745,11 @@ const WallpapersSection = () => {
   return (
     <div className="min-h-screen bg-white dark:bg-dark-bg">
       <div className="max-w-6xl mx-auto">
-        <div className="bg-white rounded-2xl shadow-xl p-8">
+        <div className="bg-white dark:bg-dark-card rounded-2xl shadow-xl p-8">
           <div className="text-center mb-8">
             <Download className="h-12 w-12 text-orange-500 mx-auto mb-4" />
-            <h2 className="text-3xl font-bold text-gray-800 mb-2">Galeria de Wallpapers</h2>
-            <p className="text-gray-600">Imagens religiosas para download</p>
+            <h2 className="text-3xl font-bold text-gray-800 dark:text-dark-text mb-2">Galeria de Wallpapers</h2>
+            <p className="text-gray-600 dark:text-gray-300">Imagens religiosas para download</p>
           </div>
 
           {/* Filtros */}
@@ -763,14 +763,14 @@ const WallpapersSection = () => {
                     placeholder="Buscar santo..."
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
-                    className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+                    className="w-full pl-10 pr-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100"
                   />
                 </div>
               </div>
               <select
                 value={selectedCategory}
                 onChange={(e) => setSelectedCategory(e.target.value)}
-                className="px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+                className="px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100"
               >
                 <option value="todos">Todas as categorias</option>
                 {categorias.map((cat) => (
@@ -785,7 +785,7 @@ const WallpapersSection = () => {
 
           {wallpapersFiltrados.length === 0 && (
             <div className="text-center py-12">
-              <p className="text-gray-500 text-lg">Nenhum wallpaper encontrado com os filtros aplicados.</p>
+              <p className="text-gray-500 dark:text-gray-400 text-lg">Nenhum wallpaper encontrado com os filtros aplicados.</p>
             </div>
           )}
         </div>
