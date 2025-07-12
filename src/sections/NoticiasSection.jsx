@@ -66,38 +66,38 @@ const NoticiasSection = () => {
   return (
     <div className="min-h-screen bg-white dark:bg-dark-bg">
       <div className="max-w-6xl mx-auto">
-        <div className="bg-white rounded-2xl shadow-xl p-8">
+        <div className="bg-white dark:bg-dark-card rounded-2xl shadow-xl p-8">
           <div className="text-center mb-8">
             <ExternalLink className="h-12 w-12 text-red-500 mx-auto mb-4" />
-            <h2 className="text-3xl font-bold text-gray-800 mb-2">Notícias Católicas</h2>
-            <p className="text-gray-600">Últimas notícias do Vaticano</p>
+            <h2 className="text-3xl font-bold text-gray-800 dark:text-dark-text mb-2">Notícias Católicas</h2>
+            <p className="text-gray-600 dark:text-gray-300">Últimas notícias do Vaticano</p>
           </div>
 
           {loadingNews ? (
             <div className="text-center py-12">
               <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-red-500 mx-auto"></div>
-              <p className="text-gray-600 mt-4">Carregando notícias...</p>
+              <p className="text-gray-600 dark:text-gray-300 mt-4">Carregando notícias...</p>
             </div>
           ) : (
             <div className="space-y-6">
               {news.map((noticia, idx) => (
-                <div key={idx} className="bg-white rounded-xl shadow-md p-6 mb-6 fade-in">
+                <div key={idx} className="bg-white dark:bg-gray-800 rounded-xl shadow-md p-6 mb-6 fade-in">
                   <div className="flex flex-col md:flex-row gap-4">
                     <div className="flex-1">
-                      <h3 className="text-xl font-semibold text-gray-800 mb-3">
+                      <h3 className="text-xl font-semibold text-gray-800 dark:text-dark-text mb-3">
                         {noticia.title}
                       </h3>
-                      <p className="text-gray-600 mb-4 line-clamp-3" dangerouslySetInnerHTML={{ __html: noticia.description || "Sem descrição disponível." }} />
+                      <p className="text-gray-600 dark:text-gray-300 mb-4 line-clamp-3" dangerouslySetInnerHTML={{ __html: noticia.description || "Sem descrição disponível." }} />
                       <div className="flex items-center justify-between">
-                        <p className="text-sm text-gray-500">
+                        <p className="text-sm text-gray-500 dark:text-gray-400">
                           {new Date(noticia.pubDate).toLocaleDateString('pt-BR')}<br/>
-                          <span className="italic text-xs text-blue-700">{noticia.fonte}</span>
+                          <span className="italic text-xs text-blue-700 dark:text-blue-400">{noticia.fonte}</span>
                         </p>
                         <a 
                           href={noticia.link}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="text-red-600 hover:text-red-700 font-medium flex items-center"
+                          className="text-red-600 dark:text-red-400 hover:text-red-700 dark:hover:text-red-300 font-medium flex items-center"
                         >
                           Ler mais
                           <ExternalLink className="h-4 w-4 ml-1" />
@@ -110,7 +110,7 @@ const NoticiasSection = () => {
 
               {news.length === 0 && !loadingNews && (
                 <div className="text-center py-12">
-                  <p className="text-gray-500 text-lg">Não foi possível carregar as notícias no momento.</p>
+                  <p className="text-gray-500 dark:text-gray-400 text-lg">Não foi possível carregar as notícias no momento.</p>
                   <Button 
                     onClick={carregarNoticias}
                     className="mt-4 bg-red-500 hover:bg-red-600 text-white"
