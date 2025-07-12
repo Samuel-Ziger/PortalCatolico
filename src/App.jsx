@@ -19,15 +19,39 @@ import OracaoModal from '@components/OracaoModal';
 import { ThemeProvider } from '@contexts/ThemeContext';
 
 import { versiculos, frasesCatolicas, misteriosRosario, oracoes, santos } from '@data/catholicData';
-import { getVersiculoDoDia, getRosarioDoDia, getTempoLiturgico } from '@lib/dateUtils';
+import { getVersiculoLiturgico, getRosarioDoDia, getTempoLiturgico } from '@lib/dateUtils';
 
 function App() {
   const [activeSection, setActiveSection] = useState('home');
   const [selectedPrayer, setSelectedPrayer] = useState(null);
+  const [versiculoHoje, setVersiculoHoje] = useState(null);
+  const [loadingVersiculo, setLoadingVersiculo] = useState(true);
 
-  const versiculoHoje = getVersiculoDoDia(versiculos);
   const rosarioHoje = getRosarioDoDia(misteriosRosario);
   const tempoLiturgico = getTempoLiturgico();
+
+  // Carrega o versículo do dia
+  useEffect(() => {
+    const carregarVersiculo = async () => {
+      try {
+        setLoadingVersiculo(true);
+        const versiculo = await getVersiculoLiturgico();
+        setVersiculoHoje(versiculo);
+      } catch (error) {
+        console.error('Erro ao carregar versículo:', error);
+        // Fallback para versículo padrão
+        setVersiculoHoje({
+          texto: "Porque Deus amou o mundo de tal maneira que deu o seu Filho unigênito, para que todo aquele que nele crê não pereça, mas tenha a vida eterna.",
+          referencia: "João 3:16",
+          comentario: "O amor de Deus por nós é infinito e incondicional. Este versículo nos lembra do maior presente que já recebemos."
+        });
+      } finally {
+        setLoadingVersiculo(false);
+      }
+    };
+
+    carregarVersiculo();
+  }, []);
 
   // Efeito para fazer scroll para o topo quando mudar de seção
   useEffect(() => {
@@ -56,8 +80,8 @@ function App() {
         <MobileNavigation activeSection={activeSection} setActiveSection={setActiveSection} navItems={navItems} />
 
         <main className="container mx-auto px-4 py-8">
-          {activeSection === 'home' && <HomeSection setActiveSection={setActiveSection} versiculoHoje={versiculoHoje} rosarioHoje={rosarioHoje} />}
-          {activeSection === 'versiculo' && <VersiculoSection versiculoHoje={versiculoHoje} />}
+          {activeSection === 'home' && <HomeSection setActiveSection={setActiveSection} versiculoHoje={versiculoHoje} rosarioHoje={rosarioHoje} loadingVersiculo={loadingVersiculo} />}
+          {activeSection === 'versiculo' && <VersiculoSection versiculoHoje={versiculoHoje} loadingVersiculo={loadingVersiculo} />}
           {activeSection === 'frases' && <FrasesSection frasesCatolicas={frasesCatolicas} />}
           {activeSection === 'wallpapers' && <WallpapersSection santos={santos} />}
           {activeSection === 'rosario' && <RosarioSection rosarioHoje={rosarioHoje} />}

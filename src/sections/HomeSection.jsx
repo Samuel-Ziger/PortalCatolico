@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { Book, Cross, Heart, Users, Calendar, Clock, Star, Download, GraduationCap, Church, Image } from 'lucide-react';
 import ChurchTimeline from '../components/ChurchTimeline';
 
-const HomeSection = ({ setActiveSection, versiculoHoje, rosarioHoje }) => {
+const HomeSection = ({ setActiveSection, versiculoHoje, rosarioHoje, loadingVersiculo }) => {
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
       {/* Hero Section */}
@@ -80,10 +80,22 @@ const HomeSection = ({ setActiveSection, versiculoHoje, rosarioHoje }) => {
       <div className="grid md:grid-cols-2 gap-6">
         <div className="bg-white dark:bg-dark-card rounded-xl p-6 shadow-lg">
           <h3 className="text-xl font-semibold text-gray-800 dark:text-dark-text mb-4">Versículo de Hoje</h3>
-          <blockquote className="text-gray-700 dark:text-gray-300 italic mb-3">
-            "{versiculoHoje.texto}"
-          </blockquote>
-          <p className="text-blue-600 dark:text-blue-400 font-medium">{versiculoHoje.referencia}</p>
+          {loadingVersiculo ? (
+            <div className="animate-pulse">
+              <div className="h-4 bg-gray-200 dark:bg-gray-600 rounded mb-2"></div>
+              <div className="h-4 bg-gray-200 dark:bg-gray-600 rounded mb-3"></div>
+              <div className="h-4 bg-gray-200 dark:bg-gray-600 rounded"></div>
+            </div>
+          ) : versiculoHoje ? (
+            <>
+              <blockquote className="text-gray-700 dark:text-gray-300 italic mb-3">
+                "{versiculoHoje.texto}"
+              </blockquote>
+              <p className="text-blue-600 dark:text-blue-400 font-medium">{versiculoHoje.referencia}</p>
+            </>
+          ) : (
+            <p className="text-gray-600 dark:text-gray-400">Carregando versículo...</p>
+          )}
         </div>
 
         <div className="bg-white dark:bg-dark-card rounded-xl p-6 shadow-lg">
